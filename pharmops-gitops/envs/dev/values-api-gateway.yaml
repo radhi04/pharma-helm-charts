@@ -3,7 +3,7 @@ replicaCount: 1
 fullnameOverride: api-gateway
 
 image:
-  repository: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/api-gateway
+  repository: AIDAW673OF4CF77HIOJWT.dkr.ecr.us-east-1.amazonaws.com/api-gateway
   tag: v1.0.0
   pullPolicy: Always
 
@@ -15,9 +15,11 @@ service:
 ingress:
   enabled: true
   className: nginx
-  host: <YOUR_ALB_HOSTNAME>
-  path: /api
-  pathType: Prefix
+  hosts:
+    - host: api-gateway.dev.local
+      paths:
+        - path: /api
+          pathType: Prefix
 
 resources:
   requests:
@@ -78,5 +80,5 @@ volumes:
 serviceAccount:
   create: true
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<AWS_ACCOUNT_ID>:role/pharma-dev-eks-role
+    eks.amazonaws.com/role-arn: arn:aws:iam::478879297284:role/pharma-dev-eks-role
   name: api-gateway
