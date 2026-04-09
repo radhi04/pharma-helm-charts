@@ -18,7 +18,7 @@ spec:
     path: pharmops-gitops/helm-charts
     helm:
       valueFiles:
-        - ../envs/dev/values-catalog-service.yaml
+        - pharmops-gitops/helm-charts
 
   destination:
     server: https://kubernetes.default.svc
