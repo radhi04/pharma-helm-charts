@@ -3,14 +3,22 @@ replicaCount: 1
 fullnameOverride: api-gateway
 
 image:
-  repository: AIDAW673OF4CF77HIOJWT.dkr.ecr.us-east-1.amazonaws.com/api-gateway
+  repository: 478879297284.dkr.ecr.us-east-1.amazonaws.com/api-gateway
   tag: v1.0.0
   pullPolicy: Always
+imagePullSecrets:
+  - name: ecr-secret  
 
 service:
   type: ClusterIP
   port: 8080
   targetPort: 8080
+
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
 
 ingress:
   enabled: true
