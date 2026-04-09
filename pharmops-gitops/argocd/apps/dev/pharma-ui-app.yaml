@@ -17,6 +17,10 @@ spec:
     targetRevision: HEAD
     path: pharmops-gitops/helm-charts
 
+    helm:
+      valueFiles:
+        - ../../envs/dev/values-ui.yaml    
+
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
