@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://github.com/radhi04/pharma-helm-charts.git
     targetRevision: HEAD
-    path: helm-charts
+    path: pharmops-gitops/helm-charts
     helm:
       valueFiles:
         - ../envs/dev/values-api-gateway.yaml

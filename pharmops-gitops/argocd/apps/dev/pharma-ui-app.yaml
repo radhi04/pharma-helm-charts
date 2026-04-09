@@ -19,7 +19,7 @@ spec:
 
     helm:
       valueFiles:
-        - ../../envs/dev/values-ui.yaml    
+        - ../envs/dev/values-pharma-ui.yaml    
 
   destination:
     server: https://kubernetes.default.svc
