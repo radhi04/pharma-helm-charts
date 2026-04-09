@@ -24,7 +24,7 @@ ingress:
   enabled: true
   className: nginx
   hosts:
-    - host: api-gateway.dev.local
+    - host: a7aefb869590b4cb1801740d60f5756f-91dc389458206424.elb.us-east-1.amazonaws.com
       paths:
         - path: /api
           pathType: Prefix
