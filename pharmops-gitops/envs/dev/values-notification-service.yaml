@@ -3,7 +3,7 @@ replicaCount: 1
 fullnameOverride: notification-service
 
 image:
-  repository: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/notification-service
+  repository: 478879297284.dkr.ecr.us-east-1.amazonaws.com/notification-service
   tag: v1.0.0
   pullPolicy: Always
 
