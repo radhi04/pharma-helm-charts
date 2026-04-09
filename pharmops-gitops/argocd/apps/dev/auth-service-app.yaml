@@ -18,7 +18,6 @@ spec:
     path: pharmops-gitops/helm-charts
     helm:
       valueFiles:
-        - valueFiles:
         - ../../envs/dev/values-auth-service.yaml 
 
   destination:
