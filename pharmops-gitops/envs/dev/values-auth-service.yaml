@@ -54,7 +54,7 @@ readinessProbe:
 configmap:
   SPRING_PROFILES_ACTIVE: dev
   SPRING_DATASOURCE_URL: SPRING_DATASOURCE_URL: jdbc:postgresql://pharma-dev-postgres.c8zsguwge5o7.us-east-1.rds.amazonaws.com:5432/pharmadb ✅
-  SPRING_FLYWAY_ENABLED: "false"   # disable flyway for now
+  SPRING_FLYWAY_ENABLED: "false"   
   SPRING_JPA_HIBERNATE_DDL_AUTO: create
   LOG_LEVEL: DEBUG
   SERVER_PORT: "8081"
