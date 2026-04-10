@@ -6,6 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
+  - name: ecr-secret
 
 nameOverride: ""
 fullnameOverride: ""
@@ -35,7 +36,7 @@ service:
   type: ClusterIP
   port: 8080
   targetPort: 8080
-
+ 
 ingress:
   enabled: false
   className: nginx
@@ -78,11 +79,14 @@ readinessProbe:
   failureThreshold: 3
   successThreshold: 1
 
-env: []
+ 
+envFrom: 
+   - secretRef:
+      name: db-credentials
 
-envFrom: []
+configmap:
+   SPRING_DATASOURCE_URL: jdbc:postgresql://pharma-dev-postgres.c8zsguwge5o7.us-east-1.rds.amazonaws.com:5432/postgres
 
-configmap: {}
 
 volumes: []
 
