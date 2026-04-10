@@ -1,50 +1,17 @@
 replicaCount: 1
 
 image:
-  repository: 478879297284.dkr.ecr.us-east-1.amazonaws.com/catalog-service:v1.0.0
-  tag: "latest"
+  repository: 478879297284.dkr.ecr.us-east-1.amazonaws.com/catalog-service
+  tag: "v1.0.0"
   pullPolicy: IfNotPresent
 
-imagePullSecrets: []
+imagePullSecrets:
   - name: ecr-secret
-
-nameOverride: ""
-fullnameOverride: ""
-
-serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
-
-podAnnotations: {}
-
-podSecurityContext:
-  fsGroup: 2000
-  runAsNonRoot: true
-  runAsUser: 1000
-
-securityContext:
-  allowPrivilegeEscalation: false
-  capabilities:
-    drop:
-      - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
 
 service:
   type: ClusterIP
   port: 8080
   targetPort: 8080
- 
-ingress:
-  enabled: false
-  className: nginx
-  annotations: {}
-  host: ""
-  path: /
-  pathType: Prefix
-  tls: []
 
 resources:
   requests:
@@ -54,50 +21,21 @@ resources:
     cpu: 500m
     memory: 512Mi
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 3
-  targetCPUUtilizationPercentage: 70
-  targetMemoryUtilizationPercentage: 80
-
 livenessProbe:
   path: /actuator/health
   port: 8080
   initialDelaySeconds: 60
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 3
-  successThreshold: 1
 
 readinessProbe:
   path: /actuator/health/readiness
   port: 8080
   initialDelaySeconds: 30
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 3
-  successThreshold: 1
 
- 
-envFrom: 
-   - secretRef:
+envFrom:
+  - secretRef:
       name: db-credentials
 
 configmap:
-   SPRING_DATASOURCE_URL: jdbc:postgresql://pharma-dev-postgres.c8zsguwge5o7.us-east-1.rds.amazonaws.com:5432/postgres
+  SPRING_DATASOURCE_URL: jdbc:postgresql://pharma-dev-postgres.c8zsguwge5o7.us-east-1.rds.amazonaws.com:5432/pharmadb
 
 
-volumes: []
-
-volumeMounts: []
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
-topologySpreadConstraints: []
-
-terminationGracePeriodSeconds: 30
